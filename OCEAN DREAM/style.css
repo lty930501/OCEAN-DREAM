@@ -122,6 +122,7 @@ h1, h2, h3, .logo, .footer-logo { font-family: 'Playfair Display', serif; }
     text-align: center;
     color: #FFFFFF;
 }
+.page-index .hero-content span { font-size: 20px; }
 .page-index .hero-content h1 { font-size: 4rem; margin-bottom: 20px; font-weight: 800; }
 .page-index .hero-content p { font-size: 1.5rem; margin-bottom: 30px; }
 .page-index .cta-btn {
@@ -539,7 +540,7 @@ h1, h2, h3, .logo, .footer-logo { font-family: 'Playfair Display', serif; }
     color: var(--secondary);
     margin-top: 0;
     margin-bottom: 0;
-    font-weight: 300;
+    font-weight: 360;
 }
 
 /* 裝飾線：增加細節質感 */
@@ -602,6 +603,9 @@ h1, h2, h3, .logo, .footer-logo { font-family: 'Playfair Display', serif; }
 .page-about .info-block { text-align: center; max-width: 800px; margin: 0 auto 80px; margin-top: 100px;}
 .page-about .info-block {
 	font-size: 1rem;
+	}
+.page-about .info-block h2 {
+	margin-bottom: 15px;
 	}
 .page-about .contact-card {
     background: #f9f9f9;
