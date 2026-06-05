@@ -456,14 +456,14 @@ h1, h2, h3, .logo, .footer-logo { font-family: 'Playfair Display', serif; }
     font-size: 2rem;
     margin-bottom: 10px; /* 控制與小字的距離 */
     color: var(--secondary);
-    font-weight: 700;
+    font-weight: 750;
 }
 
 /* 小字副標題：優雅、輕盈 */
 .page-order .section-subtitle {
-    color: var(--secondary);
+    color: #666666;
     font-size: 1rem;
-    font-weight: 300;
+    font-weight: 400;
     opacity: 0.8;
     margin: 0;
     line-height: 1.5;
@@ -491,7 +491,7 @@ h1, h2, h3, .logo, .footer-logo { font-family: 'Playfair Display', serif; }
 .page-order .total-price { 
     font-size: 1.5rem; 
     color: var(--primary); 
-    font-weight: 800; 
+    font-weight: 650; 
     margin: 25px 0; 
     text-align: center; 
     padding: 15px;
