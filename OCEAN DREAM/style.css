@@ -770,6 +770,7 @@ h1, h2, h3, .logo, .footer-logo { font-family: 'Playfair Display', serif; }
         width: 100%;
     }
 }
+.page-news .news-card h3 {margin-bottom: 15px;}
 .page-news .feature-content h3 { font-size: 2rem; color: var(--secondary); margin: 15px 0; }
 
 /* 消息列表格線 */
