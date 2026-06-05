@@ -1,0 +1,843 @@
+/* ===== Reset ===== */
+:root {
+    --primary: #00b4d8;
+    --secondary: #023047;
+    --white: #ffffff;
+    --page-bg: #f4f9fc;
+    --card-shadow: 0 10px 30px rgba(2, 48, 71, 0.08);
+    --light-bg: #eaf3f8;
+}
+
+* {
+    padding: 0;
+    margin: 0; /* 修正：統一改為 margin: 0 */
+    box-sizing: border-box;
+}
+/* 定義淡入動畫 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 應用動畫到頁面內容 */
+body {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #eef9fd, #d1e9f0);
+    background-attachment: fixed;
+    color: var(--secondary);
+    line-height: 1.7;
+    overflow-x: hidden;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+/* 修改這段即可：讓標題專用優雅字體 */
+h1, h2, h3, .logo, .footer-logo { font-family: 'Playfair Display', serif; }
+
+
+/* ===== Navbar ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 1000;
+}
+
+.logo {
+    /* Logo 仍保留 Playfair Display 展現高級渡假村氛圍 */
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 1000;
+    color: #023047;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar li {
+    margin-left: 25px;
+}
+
+/* 導覽列極簡線條風格 */
+.navbar a {
+    text-decoration: none;
+    color: #023047;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 750;
+    font-size: 17px;
+    padding: 15px;
+    transition: 0.3s;
+    position: relative;
+    background: transparent !important;
+}
+
+.navbar a:hover {
+    color: #0077b6;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    width: 0;
+    height: 1.5px;
+    background: #0077b6;
+    transition: 0.3s ease-out;
+    transform: translateX(-50%);
+}
+
+.navbar a:hover::after {
+    width: 50%;
+}
+
+/* ===== Hero (首頁版) ===== */
+/* 全站與頁面背景 */
+.page-index {
+	font-family: 'Playfair Display', serif;
+    background-color: var(--page-bg);
+}
+
+/* ===== Hero (首頁版) ===== */
+.page-index .hero {
+    height: 100vh;
+    background: linear-gradient(rgba(2, 48, 71, 0.6), rgba(2, 48, 71, 0.6)),url('images/index1.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+}
+.page-index .hero-content h1 { font-size: 4rem; margin-bottom: 20px; font-weight: 800; }
+.page-index .hero-content p { font-size: 1.5rem; margin-bottom: 30px; }
+.page-index .cta-btn {
+    background-color: #00b4d8;
+    color: var(--white);
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+    display: inline-block;
+}
+.page-index .cta-btn:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0, 180, 216, 0.4); }
+
+/* ===== Section Titles ===== */
+.page-index section { padding: 80px 5%; }
+.page-index .section-title { 
+    text-align: center; font-size: 2.2rem; margin-bottom: 50px; 
+    color: var(--secondary); font-weight: 800; 
+}
+
+/* ===== Featured Tours (卡片區) ===== */
+.page-index .card-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+.page-index .tour-card { 
+    width: 280px; background: var(--white); border-radius: 20px; overflow: hidden; 
+    box-shadow: var(--card-shadow); transition: .3s; text-align: center; padding-bottom: 20px; 
+}
+.page-index .tour-card:hover { transform: translateY(-10px); }
+.page-index .tour-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 15px; }
+/* 已修正：將 .page-home 改回 .page-index */
+.page-index .tour-card h3 { margin: 10px 0; font-size: 1.5rem; color: var(--secondary); }
+.page-index .tour-card hr { width: 50px; margin: 10px auto; border: 2px solid var(--primary); }
+
+/* ===== Advantages (優勢區背景加深) ===== */
+.page-index .advantages { background: #eaf3f8; } /* 這裡比全站背景稍微深一點點，創造層次 */
+.page-index .advantages-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+.page-index .advantage-card { background: var(--white); padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.page-index .advantage-card i { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+
+/* ===== Category Cards (園區展示) ===== */
+.page-index .category-cards { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.page-index .category-card { width: 250px; height: 350px; border-radius: 20px; overflow: hidden; position: relative; cursor: pointer; }
+.page-index .category-card img { width: 100%; height: 100%; object-fit: cover; transition: .5s; }
+.page-index .category-card:hover img { transform: scale(1.1); }
+.page-index .category-card h3 { position: absolute; bottom: 20px; width: 100%; text-align: center; color: white; font-size: 1.5rem; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+
+
+
+/* ===== 園區介紹區塊 ===== */
+.page-intro section { padding: 50px 5%; }
+.page-intro .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 50px; color: var(--secondary); font-weight: 800; }
+
+.page-intro .card-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+.page-intro .tour-card { background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: .3s; margin-top: 140px;}
+.page-intro .card-content { display: flex; align-items: center; gap: 40px; padding: 30px; }
+.page-intro .card-content img { width: 40%; height: auto; border-radius: 15px; }
+.page-intro .card-text { flex: 1; }
+.page-intro .card-text h3 { margin-bottom: 15px; font-size: 28px; color: var(--secondary); }
+.page-intro .card-text p { margin-bottom: 10px; font-size: 16px; color: #444; }
+
+.page-intro .theme-park-section { padding: 50px 5%; max-width: 1100px; margin: 0 auto; }
+
+.page-intro .park-item {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 100px;
+}
+
+.page-intro .park-item.reverse { flex-direction: row-reverse; }
+
+/* 1. 確保外層容器限制圖片溢出，並保持圓角 */
+.page-intro .park-img { 
+    flex: 1; 
+    overflow: hidden;         /* 關鍵：讓放大後的圖片不會超出圓角範圍 */
+    border-radius: 30px;      /* 確保圓角設定在此 */
+}
+
+/* 2. 圖片樣式設定 */
+.page-intro .park-img img { 
+    width: 100%; 
+    height: 350px; 
+    object-fit: cover; 
+    display: block;           /* 移除圖片底部預留的微小間隙 */
+    
+    /* 加入過渡效果，設定放大倍率的動畫過程 */
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+    
+    /* 陰影建議移至此處或保持在 img 上 */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* 3. 滑鼠懸停時的放大效果 */
+.page-intro .park-item:hover .park-img img { 
+    transform: scale(1.08);   /* 放大 8%，這種比例看起來最高級且自然 */
+}
+.page-intro .park-desc { flex: 1; padding: 20px; }
+.page-intro .park-desc h3 { font-size: 2.2rem; color: var(--secondary); margin-bottom: 20px; }
+.page-intro .park-desc p { color: #666; line-height: 1.8; margin-bottom: 20px; }
+
+/* 推薦設施區塊 */
+.page-intro .highlight-ride {
+    background: #f8fcfd;
+    padding: 20px;
+    border-left: 4px solid var(--primary);
+    border-radius: 5px;
+}
+.page-intro .highlight-ride strong { color: var(--secondary); display: block; margin-bottom: 5px; }
+
+/* ===== 夜間活動區塊 (Show Hero) ===== */
+.page-intro .show-hero {
+    position: relative;
+    height: 50vh; /* 比主 Hero 更短一點，更有強調感 */
+    background: url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1600') center/cover no-repeat fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.page-intro .show-hero .hero-overlay {
+    background: rgba(1, 15, 30, 0.7); /* 更深的深藍色遮罩，呼應夜晚 */
+}
+
+.page-intro .show-hero .hero-content {
+    z-index: 1;
+}
+
+.page-intro .show-hero h2 {
+    font-size: 3.5rem;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.page-intro .show-hero p {
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--accent); /* 使用亮色點綴 */
+}
+
+/* 增加一個裝飾性標籤 */
+.page-intro .show-badge {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 5px 15px;
+    border: 1px solid var(--white);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+/* ===== 園區服務 ===== */
+.page-intro .service-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+.page-intro .service-item { background: white; padding: 30px; border-radius: 15px; border-left: 5px solid var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+/* ===== 園區服務圖標樣式 ===== */
+.page-intro .service-item i {
+    font-size: 2.5rem;          /* 圖標大小 */
+    color: var(--primary);      /* 使用你的品牌色 */
+    margin-bottom: 15px;        /* 與標題間距 */
+    display: block;             /* 讓圖標獨佔一行 */
+    transition: transform 0.3s; /* 輕微動效 */
+}
+.page-intro .service-item:hover i {
+    transform: scale(1.1);      /* 滑鼠移入時圖標輕微放大 */
+}
+
+
+/* ===== 房間頁面專屬 (page-room) ===== */
+
+/* 1. 橫向滾動容器 */
+.page-room .room-scroll-section { 
+    padding: 80px 0; 
+}
+
+.page-room .scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px;
+    padding: 20px 5%;
+    scrollbar-width: thin;
+}
+
+.page-room .scroll-container::-webkit-scrollbar { height: 8px; }
+.page-room .scroll-container::-webkit-scrollbar-thumb { 
+    background: var(--primary); 
+    border-radius: 10px; 
+}
+
+/* 2. 滾動卡片樣式 */
+.page-room .scroll-card {
+    flex: 0 0 320px;
+    background: white;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: var(--card-shadow);
+    transition: 0.3s;
+    text-align: center;
+}
+
+.page-room .scroll-card:hover { transform: translateY(-10px); }
+
+.page-room .scroll-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.page-room .scroll-card h3 { margin-bottom: 10px; color: var(--secondary); }
+.page-room .scroll-card p { 
+    font-size: 0.9rem; 
+    color: #666; 
+    margin-bottom: 15px; 
+    height: 40px; 
+}
+
+.page-room .scroll-card .price { 
+    font-weight: bold; 
+    color: var(--primary); 
+    margin-bottom: 15px; 
+}
+
+.page-room .scroll-card .cta-btn { 
+    display: inline-block; 
+    padding: 10px 25px; 
+    border-radius: 50px; 
+    background: var(--secondary); 
+    color: white; 
+    text-decoration: none; 
+    transition: 0.3s;
+}
+
+.page-room .scroll-card .cta-btn:hover { background: var(--primary); }
+
+/* 3. 標題樣式 */
+.page-room .section-title{
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: var(--secondary);
+    font-weight: 800;
+    margin-top: 80px;
+}
+
+/* ===== 尊榮設施區塊 (背景改為白色) ===== */
+.page-room .room-amenities-list { 
+    padding: 50px 5%; 
+    max-width: 1100px; 
+    margin: 40px auto; /* 增加與上下區塊的間距 */
+    background-color: #ffffff; /* 設定背景為白色 */
+    border-radius: 30px; /* 加入圓角，更有度假感 */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03); /* 加入極輕微的陰影，讓白色浮起 */
+}
+
+.page-room .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.page-room .amenity-item {
+    padding: 30px;
+    text-align: center;
+    transition: 0.3s;
+    border-radius: 20px;
+}
+
+/* 圖標樣式 */
+.page-room .amenity-item i {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 25px;
+    display: block;
+    transition: 0.3s;
+}
+
+.page-room .amenity-item:hover i {
+    transform: scale(1.15);
+    color: var(--secondary);
+}
+
+/* 文字樣式 */
+.page-room .amenity-item h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--secondary);
+}
+
+.page-room .amenity-item p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* ===== 住宿預訂頁面專屬樣式 (page-order) ===== */
+
+.page-order .booking-section { 
+    padding: 100px 5%; 
+    min-height: 80vh;
+}
+
+.page-order .booking-container {
+    max-width: 600px;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 0;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+}
+
+.page-order .section-title { 
+    text-align: center; 
+    font-size: 2rem; 
+    margin-bottom: 30px; 
+    color: var(--secondary); 
+}
+/* 容器層：確保內部元素置中 */
+.page-order .form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* 主標題：稍微放大並加粗 */
+.page-order .section-title { 
+    font-size: 2rem;
+    margin-bottom: 10px; /* 控制與小字的距離 */
+    color: var(--secondary);
+    font-weight: 700;
+}
+
+/* 小字副標題：優雅、輕盈 */
+.page-order .section-subtitle {
+    color: var(--secondary);
+    font-size: 1rem;
+    font-weight: 300;
+    opacity: 0.8;
+    margin: 0;
+    line-height: 1.5;
+}
+.page-order .form-group { margin-bottom: 20px; }
+
+.page-order .form-group label { 
+    display: block; 
+    margin-bottom: 8px; 
+    color: var(--secondary); 
+    font-weight: bold; 
+}
+
+.page-order .form-group input, 
+.page-order .form-group select { 
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid #ddd; 
+    border-radius: 10px; 
+    font-size: 1rem; 
+}
+
+.page-order .date-inputs { display: flex; gap: 10px; }
+
+.page-order .total-price { 
+    font-size: 1.5rem; 
+    color: var(--primary); 
+    font-weight: 800; 
+    margin: 25px 0; 
+    text-align: center; 
+    padding: 15px;
+    background: #f8fcfd;
+    border-radius: 10px;
+}
+
+.page-order .cta-btn { 
+    width: 100%; 
+    border: none; 
+    cursor: pointer; 
+    font-size: 1.1rem; 
+    background-color: var(--primary);
+    color: white;
+    padding: 15px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.page-order .cta-btn:hover { 
+    background-color: var(--secondary); 
+	transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+}
+
+
+/* 商店頁面專屬佈局 */
+.page-shop .shop-section { 
+    padding: 80px 10%; 
+    background: 0 10px 30px rgba(2, 48, 71, 0.08);
+}
+.page-shop .shop-header { text-align: center; margin-top: 60px; margin-bottom: 80px; }
+
+
+/* 標題與內文 */
+.page-shop .shop-header .section-title {
+    font-size: 3rem;
+    color: var(--secondary);
+    margin-bottom: 25px;
+    letter-spacing: 2px; /* 增加字距，顯得貴氣 */
+    text-transform: uppercase;
+}
+
+.page-shop .shop-header .shop-intro {
+    font-size: 1rem;
+    line-height: 2;
+    color: var(--secondary);
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 300;
+}
+
+/* 裝飾線：增加細節質感 */
+.page-shop .header-line {
+    width: 60px;
+    height: 2px;
+    background: var(--primary);
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 30px;
+}
+/* 分類區塊樣式 */
+.page-shop .category-block { margin-bottom: 80px; }
+.page-shop .category-title { 
+    font-size: 1.6rem; color: var(--secondary); margin-bottom: 30px; 
+    border-bottom: 2px solid var(--secondary); padding-bottom: 10px; display: inline-block;
+}
+.page-shop .category-title i { color: var(--primary)}
+
+/* 網格系統 (3欄位) */
+.page-shop .shop-grid { 
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; 
+}
+
+/* 商品卡片質感 */
+.page-shop .product-card { 
+    text-align: center; 
+    background: #ffffff; /* 強制設定白色背景 */
+    border: 1px solid #f0f0f0; /* 給一個淡淡的邊框，區隔白色背景 */
+    padding: 20px; 
+    border-radius: 15px; 
+    transition: 0.4s; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.03); /* 加入極淡的陰影，讓白色卡片有層次 */
+}
+
+.page-shop .product-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* 滑鼠滑過時加深陰影，產生「浮起來」的效果 */
+}
+.page-shop .product-card img { width: 100%; height: 280px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; }
+.page-shop .product-card .price { color: var(--primary); font-weight: bold; margin-bottom: 10px; }
+.page-shop .product-card .description { font-size: 0.9rem; color: #666; height: 50px; margin-bottom: 20px; }
+
+/* 按鈕風格 */
+.page-shop .add-to-cart { 
+    background: transparent; border: 1px solid var(--secondary); color: var(--secondary);
+    padding: 10px 25px; border-radius: 5px; cursor: pointer; transition: 0.3s;
+}
+.page-shop .add-to-cart:hover { background: var(--secondary); color: #fff; }
+
+/* 底部服務區 */
+.page-shop .shop-support i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+.page-shop .shop-support { text-align: center; margin-top: 50px; padding: 50px; border-top: 1px solid #eee; background-color: #FFFFFF; background-color: transparent}
+
+
+/* 內容區塊 */
+.page-about .about-content { padding: 80px 10%; background:  0 10px 30px rgba(2, 48, 71, 0.08)}
+.page-about .info-block { text-align: center; max-width: 800px; margin: 0 auto 80px; margin-top: 100px;}
+.page-about .info-block {
+	font-size: 1rem;
+	}
+.page-about .contact-card {
+    background: #f9f9f9;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.page-about .contact-card1{
+    background: #f9f9f9;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.page-about .contact-card h3{
+    font-size: 1.5rem;    /* 標題放大 */
+    margin-bottom: 25px;
+    color: var(--secondary);
+    text-align: center;
+} 
+.page-about .contact-card1 h3 {
+    font-size: 1.5rem;    /* 標題放大 */
+    margin-bottom: 8px;
+    color: var(--secondary);
+}
+.page-about .contact-card i {
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.page-about .contact-card1 i {
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+/* 交通選項區塊 */
+.page-about .transport-option {
+    margin-bottom: 25px;
+    padding-left: 15px;
+    border-left: 3px solid var(--primary); /* 左側邊線作為視覺裝飾 */
+}
+
+.page-about .transport-option h4 {
+	font-size: 1.1rem;
+	margin: 0 0 8px 0;
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.page-about .transport-option p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 地圖容器微調 */
+.page-about .map-container {
+    margin-top: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* 地圖佔位符 */
+.page-about .map-placeholder { 
+    background: #eee; height: 200px; margin-top: 20px; display: flex; 
+    align-items: center; justify-content: center; border-radius: 10px; 
+}
+
+/* 聯絡列表 */
+.page-about .contact-list { list-style: none; padding: 0; margin: 20px 0; }
+.page-about .contact-list li { margin-bottom: 10px; }
+
+/* 按鈕 */
+.page-about .contact-btn { 
+    display: inline-block; 
+    padding: 12px 30px; 
+    background: var(--primary); 
+    color: white; 
+    border-radius: 5px; 
+    text-decoration: none; 
+    margin-top: 20px;
+    
+    /* 核心：定義過渡效果 */
+    transition: all 0.4s ease; 
+    border: 2px solid var(--primary); /* 預留邊框，避免 hover 時變形 */
+}
+
+/* 滑鼠懸停後的樣式 */
+.page-about .contact-btn:hover {
+    background: transparent; /* 背景變透明，露出邊框 */
+    color: var(--primary);    /* 文字變成品牌色 */
+    cursor: pointer;
+    transform: translateY(-3px); /* 輕微上浮，增加立體感 */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* 增加陰影，強化浮起效果 */
+}
+
+
+
+/* --- 最新消息頁面專屬樣式 --- */
+
+/* 頁面標題區 */
+
+.page-news .news-container { padding: 50px 10%; max-width: 1300px; margin: 0 auto; }
+
+/* 焦點新聞 (Feature) */
+/* 外層容器 */
+.page-news .news-features-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 80px; /* 每一則新聞間的距離 */
+    padding: 50px 10%;
+}
+
+/* 基礎設定 */
+.page-news .news-feature {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 30px; /* 給予一點內邊距，方便陰影顯示 */
+    border-radius: 25px;
+    transition: all 0.5s ease; /* 平滑過渡效果 */
+    background: transparent;
+}
+
+.page-news .news-feature img {
+    width: 50%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 0.6s ease; /* 圖片放大動畫 */
+}
+.page-news .news-feature:hover {
+    background: #ffffff; /* 懸停時出現淺色底，凸顯該區塊 */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08); /* 浮起感 */
+}
+.page-news .news-feature:hover img {
+    transform: scale(1.03); /* 圖片微微放大 */
+}
+.page-news .read-more {
+    display: inline-block;
+    transition: 0.3s;
+}
+.page-news .news-feature:hover .read-more {
+    padding-left: 10px; /* 懸停時文字向右輕微移動，引導點擊 */
+    color: var(--secondary); /* 顏色變化 */
+}
+
+.page-news .feature-content { width: 50%; }
+
+/* 核心技巧：偶數項 (第2則) 將左右順序顛倒 */
+.page-news .news-feature:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* 響應式：手機版自動恢復直向排列 */
+@media (max-width: 768px) {
+    .page-news .news-feature,
+    .page-news .news-feature:nth-child(even) {
+        flex-direction: column;
+    }
+    .page-news .news-feature img,
+    .page-news .feature-content {
+        width: 100%;
+    }
+}
+.page-news .feature-content h3 { font-size: 2rem; color: var(--secondary); margin: 15px 0; }
+
+/* 消息列表格線 */
+.page-news .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 100px;}
+.page-news .news-card { padding: 20px; border: 1px solid #eee; border-radius: 15px; background: #fff; transition: 0.3s; }
+.page-news .news-card:hover { border-color: var(--primary); }
+
+/* 標籤樣式 */
+.page-news .tag { 
+    display: inline-block; font-size: 0.8rem; background: #eef7f9; 
+    color: var(--primary); padding: 5px 12px; border-radius: 20px; margin-bottom: 15px; 
+}
+
+.page-news .read-more { color: var(--primary); font-weight: bold; text-decoration: none; border-bottom: 2px solid var(--primary); }
+
+
+/* ===== Footer ===== */
+footer {
+    background: linear-gradient(135deg, #023047, #03506f);
+    color: white;
+    text-align: center;
+    padding: 50px 10px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+footer h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 1000;
+    color: #FFFFFF;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 10px; /* 與下方文字的距離 */
+}
+
+footer p {
+    font-family: 'Playfair Display', sans-serif;
+	font-size: 15px;
+    }
+.social-icons { margin-top: 25px; }
+
+.social-icons a {
+    color: white;
+    margin: 0 15px;
+    font-size: 24px;
+    transition: 0.3s;
+}
+
+.social-icons a:hover { color: #90e0ef; }
+
+.copyright {
+    margin-top: 35px;
+    color: #bbb;
+    font-size: 14px;
+}
+
+/* ===== RWD ===== */
+@media(max-width: 992px) {
+    .navbar { flex-direction: column; padding: 15px; }
+    .navbar ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+}
+
+@media(max-width: 480px) {
+    .navbar li { margin: 0 8px; }
+    .navbar a { font-size: 14px; }
+}

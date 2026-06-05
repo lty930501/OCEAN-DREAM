@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="utf-8">
+    <link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;1000&display=swap" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+    <nav class="navbar">
+        <div class="logo"><script>
+</script>Ocean Dream</div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="introduction.html">園區介紹</a></li>
+            <li><a href="room.html">房型</a></li>
+            <li><a href="order.html">住宿預訂</a></li>
+            <li><a href="shop.html">商店</a></li>
+            <li><a href="about.html">關於我們</a></li>
+            <li><a href="news.html">最新消息</a></li>
+        </ul>
+    </nav>
+	<body class="page-order">
+		
+		<section class="booking-section">
+    <div class="booking-container">
+        <div class="form-header">
+        <h2 class="section-title">開啟您的蔚藍夢境</h2>
+        <p class="section-subtitle">請填寫下方資訊，讓我們為您準備一場無與倫比的海洋度假體驗</p>
+    </div>
+        <form id="bookingForm" class="booking-form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeMPO1zRU2zlXgz4ccxXGZLhMQBnw5K-6J9X_V8ahgI0qPTmA/formResponse" method="POST">
+            
+            <div class="form-group">
+                <label>姓名</label>
+                <input type="text" name="entry.719016672" required placeholder="請輸入姓名">
+            </div>
+
+            <div class="form-group">
+                <label>聯絡電話</label>
+                <input type="tel" name="entry.388025415" required placeholder="請輸入電話">
+            </div>
+
+            <div class="form-group">
+    	<label>入住人數</label>
+    	<input type="number" name="entry.1161431285" min="1" max="10" value="1" required>
+		</div>
+
+            <div class="form-group">
+    <label>房型</label>
+    <select name="entry.169091260" id="roomType" onchange="calculateTotal()" required>
+        <option value="" disabled selected>請選擇房型</option>
+        <option value="5200">蔚藍海景套房 (NT$ 5,200)</option>
+		<option value="7900">珊瑚礁親子房 (NT$ 7,900)</option>
+		<option value="8800">星空沙灘別墅 (NT$ 8,800)</option>
+        <option value="14800">皇家海洋 Villa (NT$ 14,800)</option>
+    </select>
+</div>
+
+            <div class="form-group">
+    <label>入住與退房日期</label>
+    <div class="date-inputs">
+        <input type="date" id="checkIn" name="entry.1624356364" onchange="calculateTotal()" required>
+        <input type="date" id="checkOut" name="entry.1485181565" onchange="calculateTotal()" required>
+    </div>
+</div>
+
+            <div class="form-group">
+    <label>付款方式</label>
+    <select name="entry.1016143363" required>
+        <option value="" disabled selected>請選擇付款方式</option>
+        <option>信用卡</option>
+        <option>匯款</option>
+        <option>現場付款</option>
+    </select>
+</div>
+
+            <!-- 金額顯示區 -->
+<div class="total-price">
+    總金額: NT$ <span id="displayTotal">0</span>
+</div>
+
+<!-- 按鈕：移除原本的 submit 行為，改用 JS 控制 -->
+<button type="button" class="cta-btn" onclick="submitOrder()">確認送出訂單</button>
+        </form>
+    </div>
+			<script>
+function submitOrder() {
+    const form = document.getElementById('bookingForm');
+    
+    if (form.checkValidity()) {
+        // 1. 顯示成功彈窗
+        Swal.fire({
+            title: '訂單送出成功！',
+            text: '感謝您的預訂，管家將於 24 小時內與您聯繫。',
+            icon: 'success',
+            confirmButtonText: '確定',
+            confirmButtonColor: '#023047'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // 2. 透過 Fetch 送出資料到 Google 表單 (防止跳轉)
+                const formData = new FormData(form);
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors' // 這是關鍵，避免跨域問題
+                }).then(() => {
+                    // 3. 送出後重置表單
+                    form.reset();
+                    // 4. 重置總金額顯示
+                    document.getElementById('displayTotal').innerText = "0";
+                    // 視需要可選：重置後滾動回頁面頂部
+                    window.scrollTo(0, 0);
+                });
+            }
+        });
+    } else {
+        form.reportValidity();
+    }
+}
+</script>
+</section>
+		<script>
+function calculateTotal() {
+    const roomSelect = document.getElementById('roomType');
+    const checkIn = document.getElementById('checkIn').value;
+    const checkOut = document.getElementById('checkOut').value;
+    const displayTotal = document.getElementById('displayTotal');
+    
+    const pricePerNight = parseInt(roomSelect.value);
+
+    // 確保房型已選，且兩個日期都已填寫
+    if (roomSelect.value && checkIn && checkOut) {
+        const date1 = new Date(checkIn);
+        const date2 = new Date(checkOut);
+        
+        // 計算毫秒差，轉換為天數
+        const diffTime = Math.abs(date2 - date1);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        // 確保退房日期大於入住日期
+        if (date2 > date1) {
+            const total = diffDays * pricePerNight;
+            displayTotal.innerText = total.toLocaleString();
+        } else {
+            alert("退房日期必須晚於入住日期！");
+            displayTotal.innerText = "0";
+        }
+    } else {
+        displayTotal.innerText = "0";
+    }
+}
+</script>
+		<script>
+// 在頁面載入時自動設定 min 日期為今天
+document.addEventListener("DOMContentLoaded", function() {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('checkIn').setAttribute('min', today);
+    document.getElementById('checkOut').setAttribute('min', today);
+});
+</script>
+	</body>
+	
+		<footer>
+		<div class="footer-logo">Ocean Dream</div>
+    	<p>11402餐旅資訊管理_第5組成果報告示範</p>
+
+    	<div class="social-icons">
+        	<a href="#"><i class="fab fa-facebook"></i></a>
+        	<a href="#"><i class="fab fa-instagram"></i></a>
+        	<a href="#"><i class="fab fa-line"></i></a>
+        	
+    	</div>
+	</footer>
+	</html>
