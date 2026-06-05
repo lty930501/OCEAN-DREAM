@@ -124,7 +124,7 @@ h1, h2, h3, .logo, .footer-logo { font-family: 'Playfair Display', serif; }
 }
 .page-index .hero-content span { font-size: 20px; }
 .page-index .hero-content h1 { font-size: 4rem; margin-bottom: 20px; font-weight: 800; }
-.page-index .hero-content p { font-size: 1.5rem; margin-bottom: 30px; }
+.page-index .hero-content p { font-size: 1.3rem; margin-bottom: 30px; }
 .page-index .cta-btn {
     background-color: #00b4d8;
     color: var(--white);
