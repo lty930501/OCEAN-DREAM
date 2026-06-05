@@ -51,16 +51,16 @@
 
             <div class="form-group">
     <label>房型</label>
-    <select name="entry.169091260" id="roomType" onchange="calculateTotal()" required>
+    <select id="roomType" onchange="calculateTotal()" required>
         <option value="" disabled selected>請選擇房型</option>
-        <option value="5200">蔚藍海景套房 (NT$ 5,200)</option>
-		<option value="6500">珍珠港灣景觀房 (NT$ 6,500)</option>
-		<option value="7900">珊瑚礁親子房 (NT$ 7,900)</option>
-		<option value="8800">星空沙灘別墅 (NT$ 8,800)</option>
-        <option value="14800">皇家海洋別墅 (NT$ 14,800)</option>
+        <option value="5200" data-name="蔚藍海景套房">蔚藍海景套房 (NT$ 5,200)</option>
+        <option value="6500" data-name="珍珠港灣景觀房">珍珠港灣景觀房 (NT$ 6,500)</option>
+        <option value="7900" data-name="珊瑚礁親子房">珊瑚礁親子房 (NT$ 7,900)</option>
+        <option value="8800" data-name="星空沙灘別墅">星空沙灘別墅 (NT$ 8,800)</option>
+        <option value="14800" data-name="皇家海洋別墅">皇家海洋別墅 (NT$ 14,800)</option>
     </select>
 </div>
-
+<input type="hidden" name="entry.169091260" id="roomNameField">
             <div class="form-group">
     <label>入住與退房日期</label>
     <div class="date-inputs">
@@ -83,6 +83,7 @@
 <div class="total-price">
     總金額：NT$ <span id="displayTotal">0</span>
 </div>
+	<input type="hidden" name="entry.1502595816" id="totalAmountField">		
 
 <!-- 按鈕：移除原本的 submit 行為，改用 JS 控制 -->
 <button type="button" class="cta-btn" onclick="submitOrder()">確認送出訂單</button>
@@ -131,27 +132,27 @@ function calculateTotal() {
     const checkOut = document.getElementById('checkOut').value;
     const displayTotal = document.getElementById('displayTotal');
     
+    // 取得選中的房型資訊
+    const selectedOption = roomSelect.options[roomSelect.selectedIndex];
     const pricePerNight = parseInt(roomSelect.value);
+    const roomName = selectedOption.getAttribute('data-name'); // 取得房型名稱
 
-    // 確保房型已選，且兩個日期都已填寫
     if (roomSelect.value && checkIn && checkOut) {
         const date1 = new Date(checkIn);
         const date2 = new Date(checkOut);
-        
-        // 計算毫秒差，轉換為天數
         const diffTime = Math.abs(date2 - date1);
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-        // 確保退房日期大於入住日期
         if (date2 > date1) {
             const total = diffDays * pricePerNight;
             displayTotal.innerText = total.toLocaleString();
+            
+            // 同步更新給隱藏欄位
+            document.getElementById('roomNameField').value = roomName;
+            document.getElementById('totalAmountField').value = total;
         } else {
-            alert("退房日期必須晚於入住日期！");
             displayTotal.innerText = "0";
         }
-    } else {
-        displayTotal.innerText = "0";
     }
 }
 </script>
