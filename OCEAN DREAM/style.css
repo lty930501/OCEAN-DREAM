@@ -231,7 +231,7 @@ h1, h2, h3, .logo, .footer-logo { font-family: 'Playfair Display', serif; }
     border-radius: 5px;
 }
 .page-intro .highlight-ride strong { color: var(--secondary); display: block; margin-bottom: 5px; }
-
+.page-intro .highlight-ride p { margin-bottom: 5px; }
 /* ===== 夜間活動區塊 (Show Hero) ===== */
 .page-intro .show-hero {
     position: relative;
@@ -277,7 +277,8 @@ h1, h2, h3, .logo, .footer-logo { font-family: 'Playfair Display', serif; }
 }
 /* ===== 園區服務 ===== */
 .page-intro .service-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-.page-intro .service-item { background: white; padding: 30px; border-radius: 15px; border-left: 5px solid var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.page-intro .service-item { background: white; padding: 25px; border-radius: 15px; border-left: 5px solid var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.page-intro .service-item p { color: #666666; }
 /* ===== 園區服務圖標樣式 ===== */
 .page-intro .service-item i {
     font-size: 2.5rem;          /* 圖標大小 */
@@ -733,7 +734,7 @@ h1, h2, h3, .logo, .footer-logo { font-family: 'Playfair Display', serif; }
     transition: all 0.5s ease; /* 平滑過渡效果 */
     background: transparent;
 }
-
+.page-news .news-feature p { color: #666666; margin-bottom: 15px;}
 .page-news .news-feature img {
     width: 50%;
     height: 350px;
@@ -776,7 +777,8 @@ h1, h2, h3, .logo, .footer-logo { font-family: 'Playfair Display', serif; }
     }
 }
 .page-news .news-card h3 {margin-bottom: 15px;}
-.page-news .feature-content h3 { font-size: 1.96rem; color: var(--secondary); margin: 15px 0; }
+.page-news .news-card p { color: #666666; }
+.page-news .feature-content h3 { font-size: 1.93rem; color: var(--secondary); margin: 15px 0; }
 
 /* 消息列表格線 */
 .page-news .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 100px;}
