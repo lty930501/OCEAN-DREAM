@@ -580,6 +580,7 @@ h1, h2, h3, .logo, .footer-logo { font-family: 'Playfair Display', serif; }
     transform: translateY(-10px); 
     box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* 滑鼠滑過時加深陰影，產生「浮起來」的效果 */
 }
+.page-shop .product-card h3 {margin-bottom: 12px; }
 .page-shop .product-card img { width: 100%; height: 280px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; }
 .page-shop .product-card .price { color: var(--primary); font-weight: bold; margin-bottom: 10px; }
 .page-shop .product-card .description { font-size: 0.9rem; color: #666; height: 50px; margin-bottom: 20px; }
@@ -771,7 +772,7 @@ h1, h2, h3, .logo, .footer-logo { font-family: 'Playfair Display', serif; }
     }
 }
 .page-news .news-card h3 {margin-bottom: 15px;}
-.page-news .feature-content h3 { font-size: 2rem; color: var(--secondary); margin: 15px 0; }
+.page-news .feature-content h3 { font-size: 1.96rem; color: var(--secondary); margin: 15px 0; }
 
 /* 消息列表格線 */
 .page-news .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 100px;}
