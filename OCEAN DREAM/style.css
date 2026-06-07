@@ -676,7 +676,7 @@ h1, h2, h3, .logo, .footer-logo { font-family: 'Playfair Display', serif; }
 .page-about .contact-list li { margin-bottom: 10px; }
 .page-about .contact-list li i {
     width: 30px;           /* 給圖示一個固定的寬度 */
-	margin-right: 10px;    /* 圖示與文字保持間距 */
+	margin-right: 15px;    /* 圖示與文字保持間距 */
 }
 
 /* 按鈕 */
