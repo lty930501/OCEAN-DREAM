@@ -778,7 +778,7 @@ h1, h2, h3, .logo, .footer-logo { font-family: 'Playfair Display', serif; }
 }
 .page-news .news-card h3 {margin-bottom: 15px;}
 .page-news .news-card p { color: #666666; }
-.page-news .feature-content h3 { font-size: 1.93rem; color: var(--secondary); margin: 15px 0; }
+.page-news .feature-content h3 { font-size: 2rem; color: var(--secondary); margin: 15px 0; }
 
 /* 消息列表格線 */
 .page-news .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 100px;}
